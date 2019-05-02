@@ -73,7 +73,7 @@
         for (var i = 0; i < cont; i++) {
           $(".popular").append(`
   <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-    <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
+    <a href="${data['data'][i]['link']}" class="fancybox" rel="ligthbox">
       <img src="${data['data'][i]['images']['standard_resolution']['url']}" class="zoom img-fluid" alt="">
     </a>
   </div>`);

@@ -80,7 +80,8 @@
 
       <h2>Fotos de mi instagram</h2>
       <br>
-      <div class="row popular">
+      <div class="row popular" id="popular">
+
 
       </div>
       <h2>Fotos por defecto</h2>
@@ -385,6 +386,21 @@
       });
     });
 
+    function effecto() {
+      $(".fancybox").fancybox({
+        openEffect: "none",
+        closeEffect: "none"
+      });
+
+      $(".zoom").hover(function() {
+
+        $(this).addClass('transition');
+      }, function() {
+
+        $(this).removeClass('transition');
+      });
+    }
+
 
     $('#modal1').on('hidden.bs.modal', function(e) {
       // do something...
@@ -417,15 +433,17 @@
         var cont = data['data'].length
 
         console.log(data['data'][0]['images']['standard_resolution']['url'])
-
+        var d1 = document.getElementById('popular');
         for (var i = 0; i < cont; i++) {
           $(".popular").append(`
-<div class="col-lg-3 col-md-4 col-xs-6 thumb">
-  <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox">
-    <img src="${data['data'][i]['images']['standard_resolution']['url']}" class="zoom img-fluid" alt="">
-  </a>
-</div>`);
+            <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+              <a href="${data['data'][i]['images']['standard_resolution']['url']}" class="fancybox" rel="ligthbox" target="_blank">
+                <img src="${data['data'][i]['images']['standard_resolution']['url']}" class="zoom img-fluid" alt="">
+              </a>
+            </div>`);
         }
+
+        effecto()
 
       }
     });
